@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var _ = require('underscore');
 
 var candyDatabaseFilename = path.join(__dirname, '../config', 'candy.json');
 var candyData = fs.readFileSync(candyDatabaseFilename);
@@ -16,7 +17,7 @@ Candy.getCandies = function() {
 }
 
 Candy.findById = function(id) {
-	return candyDataAsJson.candies.id;
+	return _.findWhere(candyDataAsJson.candies, {id: id});
 }
 
 console.log(Candy.getCandies());
