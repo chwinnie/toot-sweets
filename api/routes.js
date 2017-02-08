@@ -74,10 +74,12 @@ module.exports = function(app) {
 	})
 
 	app.get('/confirmation', (request, response) => { 
+		var charge = request.session.charge;
 		response.render('confirmation', {
 	    	candiesInCart: candiesInCart,
 	    	runningPrice: runningPrice,
-	    	cardInfo: request.session.charge.source
+	    	amountCharged: charge.amount,
+	    	cardInfo: charge.source
 		});
 	})
 }	
