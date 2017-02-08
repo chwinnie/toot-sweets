@@ -18,31 +18,40 @@ var getCentAmount = function(priceAsStr) {
 }
 
 module.exports = function(app) {
-	app.get('/', (request, response) => {  
-	  response.render('home', {
-	    candies: Candy.getCandies(),
-	    errorMessage: errorMessage
+	app.get('/', (request, response) => { 
+		car = new Cart()
+		candiesInCart = []
+		runningPrice = 0
+		runningPriceObj = {}
+		cart.emptyCart()
+		candiesInCart = []
+		response.render('home', {
+		candies: Candy.getCandies(),
+		errorMessage: errorMessage
 	  })
 	})
 
 	app.get('/cart', (request, response) => { 
 		var items = cart.getItems()
 		_.each(items, function(item) {
-			var candy = Candy.findById(item.id)
-			candy.quantity = item.quantity
-			candy.totalPrice = candy.quantity * candy.price
-			var totalPriceAsStr = candy.totalPrice.toString()
-			candy.dollarAmount = getDollarAmount(totalPriceAsStr)
-			candy.centAmount = getCentAmount(totalPriceAsStr)
-			if (candy.dollarAmount === "") {
-				candy.dollarAmount = '0'
+			var itemInCart = _.findWhere(candiesInCart, {id: item.id});
+			if (_.isUndefined(itemInCart) || itemInCart.quantity !== item.quantity) {
+				var candy = Candy.findById(item.id)
+				candy.quantity = item.quantity
+				candy.totalPrice = candy.quantity * candy.price
+				var totalPriceAsStr = candy.totalPrice.toString()
+				candy.dollarAmount = getDollarAmount(totalPriceAsStr)
+				candy.centAmount = getCentAmount(totalPriceAsStr)
+				if (candy.dollarAmount === "") {
+					candy.dollarAmount = '0'
+				}
+				if (candy.centAmount.length === 1) {
+					candy.centAmount = '0' + candy.centAmount
+				}
+				
+				runningPrice += candy.totalPrice
+				candiesInCart.push(candy)
 			}
-			if (candy.centAmount.length === 1) {
-				candy.centAmount = '0' + candy.centAmount
-			}
-			
-			runningPrice += candy.totalPrice
-			candiesInCart.push(candy)
 		})
 		var runningPriceAsStr = runningPrice.toString()
 		runningPriceObj.dollarAmount = getDollarAmount(runningPriceAsStr)
@@ -72,7 +81,6 @@ module.exports = function(app) {
 		})
 		if (totalNumItemsOrdered > 2) {
 			errorMessage = 'You cannot order more than two items at once.'
-			cart.emptyCart()
 			response.redirect('back')
 		} else {
 			response.redirect('/cart')
