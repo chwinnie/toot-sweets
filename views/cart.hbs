@@ -2,10 +2,11 @@
 {{> order }}
 
 <form action="/checkout" method="POST">
+	<input type="hidden" name="chargeAmount" value="{{runningPrice}}"></input>
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_YXkbOkxxC7yBloeRpBz6xwJ3"
-    data-amount="999"
+    data-amount="{{runningPrice}}"
     data-name="Stripe.com"
     data-description="Widget"
     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"

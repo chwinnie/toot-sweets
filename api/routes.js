@@ -58,10 +58,11 @@ module.exports = function(app) {
 	})
 
 	app.post('/checkout', (request, response) => { 	
-  		var stripeToken = request.body.stripeToken
+		var body = request.body;
+  		var stripeToken = body.stripeToken
   		// Charge the user's card:
 		stripe.charges.create({
-		  amount: 1000,
+		  amount: body.chargeAmount,
 		  currency: "usd",
 		  description: "Example charge",
 		  source: stripeToken,
