@@ -1,9 +1,13 @@
 Candy = require('./candy_model');
 Cart = require('./cart_model');
 var _ = require('underscore');
+var stripe = require("stripe")("sk_test_4xKohW2yCQD3RpskZZOoIhKa");
 
 var cart = new Cart();
 var errorMessage = '';
+var candiesInCart = [];
+var runningPrice = 0;
+var charge = {};
 
 module.exports = function(app) {
 	app.get('/', (request, response) => {  
@@ -15,8 +19,6 @@ module.exports = function(app) {
 
 	app.get('/cart', (request, response) => { 
 		var items = cart.getItems();
-		var candiesInCart = [];
-		var runningPrice = 0;
 		_.each(items, function(item) {
 			var candy = Candy.findById(item.id);
 			candy.quantity = item.quantity;
@@ -55,8 +57,30 @@ module.exports = function(app) {
 		}
 	})
 
-	app.post('/checkout', (request, response) => { 
+	app.post('/checkout', (request, response) => { 	
   		var stripeToken = request.body.stripeToken;
+  		var me = this;
+  		// Charge the user's card:
+		stripe.charges.create({
+		  amount: 1000,
+		  currency: "usd",
+		  description: "Example charge",
+		  source: stripeToken,
+		}).then(function(charge) {
+			request.session.charge = charge;
+			response.redirect('/confirmation')
+		}, function(error) {
+			errorMessage = 'Unable to charge your card.'
+		});
+	})
+
+	app.get('/confirmation', (request, response) => { 
+		console.log(request.session.charge);
+		response.render('confirmation', {
+	    	candiesInCart: candiesInCart,
+	    	runningPrice: runningPrice,
+	    	cardInfo: request.session.charge.source
+		});
 	})
 }	
 
