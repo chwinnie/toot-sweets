@@ -1,12 +1,4 @@
-<div>Your Cart</div>
-{{#each candiesInCart}}
-    <h1>{{name}} x {{quantity}}</h1>
-    <h3>{{totalPrice}}</h1>
-{{/each}}
-
-{{runningPrice}}
-
-<form action="/checkout" method="POST">
+<form action="/your-server-side-code" method="POST">
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_YXkbOkxxC7yBloeRpBz6xwJ3"

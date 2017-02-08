@@ -54,5 +54,9 @@ module.exports = function(app) {
 			response.redirect('/cart');	
 		}
 	})
+
+	app.post('/checkout', (request, response) => { 
+  		var stripeToken = request.body.stripeToken;
+	})
 }	
 
