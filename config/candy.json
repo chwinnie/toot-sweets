@@ -1,0 +1,15 @@
+{"candies": [
+	{	
+		"id": 1,
+		"name": "fruity",
+		"price": 3.5,
+		"image": "hardcode"
+	},
+
+	{
+		"id": 2,
+		"name": "chocolate",
+		"price": 4.95,
+		"image": "hardcode2"
+	}
+]}
