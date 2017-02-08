@@ -1,6 +1,6 @@
 {{#each candiesInCart}}
     <h1>{{name}} x {{quantity}}</h1>
-    <h3>{{totalPrice}}</h1>
+    <h3>${{dollarAmount}}.{{centAmount}}</h1>
 {{/each}}
 
-{{runningPrice}}
+<h1>${{runningPriceObj.dollarAmount}}.{{runningPriceObj.centAmount}}</h1>

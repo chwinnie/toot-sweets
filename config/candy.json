@@ -3,6 +3,8 @@
 		"id": 1,
 		"name": "fruity",
 		"price": 350,
+		"dollarPrice": 3,
+		"centPrice": 50,
 		"image": "hardcode"
 	},
 
@@ -10,6 +12,8 @@
 		"id": 2,
 		"name": "chocolate",
 		"price": 495,
+		"dollarPrice": 4,
+		"centPrice": 95,
 		"image": "hardcode2"
 	}
 ]}

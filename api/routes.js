@@ -7,7 +7,15 @@ var cart = new Cart()
 var errorMessage = ''
 var candiesInCart = []
 var runningPrice = 0
-var charge = {}
+var runningPriceObj = {}
+
+var getDollarAmount = function(priceAsStr) {
+	return priceAsStr.slice(0, priceAsStr.length - 2)
+}
+
+var getCentAmount = function(priceAsStr) {
+	return priceAsStr.slice(-2)
+}
 
 module.exports = function(app) {
 	app.get('/', (request, response) => {  
@@ -25,10 +33,22 @@ module.exports = function(app) {
 			candy.totalPrice = candy.quantity * candy.price;
 			runningPrice += candy.totalPrice;
 			candiesInCart.push(candy);
+			var totalPriceAsStr = candy.totalPrice.toString()
+			candy.dollarAmount = getDollarAmount(totalPriceAsStr)
+			candy.centAmount = getCentAmount(totalPriceAsStr)
+			if (candy.dollarAmount === "") {
+			}
+			if (candy.centAmount.length === 1) {
+			}
+			
 		})
+		var runningPriceAsStr = runningPrice.toString()
+		runningPriceObj.dollarAmount = getDollarAmount(runningPriceAsStr)
+		runningPriceObj.centAmount = getCentAmount(runningPriceAsStr)
 	  	response.render('cart', {
 	    	candiesInCart: candiesInCart,
-	    	runningPrice: runningPrice
+	    	runningPrice: runningPrice,
+	    	runningPriceObj: runningPriceObj
 		})
 	})
 
@@ -79,7 +99,6 @@ module.exports = function(app) {
 		response.render('confirmation', {
 	    	candiesInCart: candiesInCart,
 	    	runningPrice: runningPrice,
-	    	amountCharged: charge.amount,
 	    	cardInfo: charge.source
 		})
 	})

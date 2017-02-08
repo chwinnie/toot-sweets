@@ -2,7 +2,7 @@
 <form action="/cart" method="post">
 	{{#each candies}}
 	    <h1>{{name}}</h1>
-	    <h3>{{price}}</h1>
+	    <h3>${{dollarPrice}}.{{centPrice}}</h1>
 	    <select name="quantities">
 	      <option>0</option>
 		  <option>1</option>
