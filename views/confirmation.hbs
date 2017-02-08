@@ -1,10 +1,26 @@
-<h1>Confirmation</h1>
+<div class="flex flex-column items-center justify-center">
+	<h1>Confirmation</h1>
 
-<h2>Billing Info</h2>
-<h3>Charged Amount: ${{chargeAmountDollars}}.{{chargeAmountCents}} </h3>
-<h3>Payment Type: {{cardInfo.brand}}</h3>
-<h3>Account # XXXX-XXXX-{{cardInfo.last4}}</h3>
-<h3>Expires {{cardInfo.exp_month}}/{{cardInfo.exp_year}}</h3>
+	<h2>Billing Info</h2>
+	<div style="width: 500px;">
+		<div class="flex fill-x justify-between">
+			<h2>Charged Amount</h2>
+			<h2>${{chargeAmountDollars}}.{{chargeAmountCents}}</h2>
+		</div>
+		<div class="flex fill-x justify-between">
+			<h2>Payment Type:</h2>
+			<h2>{{cardInfo.brand}}</h2>
+		</div>
+		<div class="flex fill-x justify-between">
+			<h2>Account #:</h2>
+			<h2>XXXX-XXXX-{{cardInfo.last4}}</h2>
+		</div>
+		<div class="flex fill-x justify-between">
+			<h2>Expires:</h2>
+			<h2>{{cardInfo.exp_month}}/{{cardInfo.exp_year}}</h2>
+		</div>
+	</div>
 
-<h2>Your Order</h2>
-{{> order }}
+	<h2>Your Order</h2>
+	{{> order }}
+</div>

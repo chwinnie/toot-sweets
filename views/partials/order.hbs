@@ -1,13 +1,13 @@
 <div style="width: 500px;">
 	{{#each candiesInCart}}
 		<div class="flex fill-x justify-between">
-	    	<h1>{{name}} x {{quantity}}</h1>
-	    	<h1>${{dollarAmount}}.{{centAmount}}</h1>
+	    	<h2>{{name}} x {{quantity}}</h2>
+	    	<h2>${{dollarAmount}}.{{centAmount}}</h2>
 	    </div>
 	{{/each}}
 	<hr>
 	<div class="flex justify-end">
-    	<h1>${{runningPriceObj.dollarAmount}}.{{runningPriceObj.centAmount}}</h1>
+    	<h2>${{runningPriceObj.dollarAmount}}.{{runningPriceObj.centAmount}}</h2>
     </div>
 </div>
 
