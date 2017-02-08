@@ -59,7 +59,6 @@ module.exports = function(app) {
 
 	app.post('/checkout', (request, response) => { 	
   		var stripeToken = request.body.stripeToken;
-  		var me = this;
   		// Charge the user's card:
 		stripe.charges.create({
 		  amount: 1000,
@@ -75,7 +74,6 @@ module.exports = function(app) {
 	})
 
 	app.get('/confirmation', (request, response) => { 
-		console.log(request.session.charge);
 		response.render('confirmation', {
 	    	candiesInCart: candiesInCart,
 	    	runningPrice: runningPrice,
