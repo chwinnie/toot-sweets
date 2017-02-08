@@ -5,7 +5,7 @@
 		"price": 350,
 		"dollarPrice": 3,
 		"centPrice": 50,
-		"image": "hardcode"
+		"imagePath": "/images/fruity-bar.jpg"
 	},
 
 	{
@@ -14,6 +14,6 @@
 		"price": 495,
 		"dollarPrice": 4,
 		"centPrice": 95,
-		"image": "hardcode2"
+		"imagePath": "/images/choco-bar.jpg"
 	}
 ]}

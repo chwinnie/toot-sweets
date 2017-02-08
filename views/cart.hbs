@@ -1,16 +1,19 @@
-<div>Your Cart</div>
-{{> order }}
 
-<form action="/checkout" method="POST">
-	<input type="hidden" name="chargeAmount" value="{{runningPrice}}"></input>
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_YXkbOkxxC7yBloeRpBz6xwJ3"
-    data-amount="{{runningPrice}}"
-    data-name="Stripe.com"
-    data-description="Widget"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto"
-    data-zip-code="true">
-  </script>
-</form>
+<div class="flex flex-column items-center justify-center">
+	<h1>Your Cart</h1>
+	{{> order }}
+
+	<form action="/checkout" method="POST">
+		<input type="hidden" name="chargeAmount" value="{{runningPrice}}"></input>
+	  <script
+	    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	    data-key="pk_test_YXkbOkxxC7yBloeRpBz6xwJ3"
+	    data-amount="{{runningPrice}}"
+	    data-name="Stripe.com"
+	    data-description="Widget"
+	    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+	    data-locale="auto"
+	    data-zip-code="true">
+	  </script>
+	</form>
+</div>

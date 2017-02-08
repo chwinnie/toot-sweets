@@ -1,0 +1,21 @@
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, Arial, sans-serif;
+}
+
+input[type=submit] {
+    color: white;
+    padding:16px 32px; 
+    background: #13CC84; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 3px; 
+}
+
+h1, .h1 { font-size: 2rem; line-height: 40px; }
+h2, .h2 { font-size: 1.5rem; line-height: 32px; }
+h3, .h3 { font-size: 1.25rem; line-height: 24px; }
+h4, .h4 { font-size: 1.5rem; line-height: 24px; }
+h5, .h5 { font-size: 0.875rem; line-height: 16px; }
+h6, .h6 { font-size: 0.75rem; line-height: 16px; }
+

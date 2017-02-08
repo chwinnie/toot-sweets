@@ -1,14 +1,23 @@
 {{errorMessage}}
+
 <form action="/cart" method="post">
-	{{#each candies}}
-	    <h1>{{name}}</h1>
-	    <h3>${{dollarPrice}}.{{centPrice}}</h1>
-	    <select name="quantities">
-	      <option>0</option>
-		  <option>1</option>
-		  <option>2</option>
-		</select>
-		<input type="hidden" name="ids" value="{{id}}"></input>
-	{{/each}}
-	<input type="submit" value="Buy">
+	<div class="flex flex-column items-center justify-center">
+		<div class="flex items-center justify-center mb3">			
+				{{#each candies}}
+					<div class="flex flex-column mx1">
+					    <h1>{{name}}</h1>
+					    <img height="200px" width="auto" src="{{imagePath}}"/>
+					    <h3>${{dollarPrice}}.{{centPrice}}</h1>
+					    <select name="quantities">
+					      <option>0</option>
+						  <option>1</option>
+						  <option>2</option>
+						</select>
+						<input type="hidden" name="ids" value="{{id}}"></input>
+					</div>
+				{{/each}}
+		</div>
+		<input class="h3" type="submit" value="Buy">
+	</div>
 </form>
+</div>
