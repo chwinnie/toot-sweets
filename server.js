@@ -1,8 +1,14 @@
 var path = require('path');
 var express = require('express');  
+var bodyParser = require('body-parser'); 
 var exphbs = require('express-handlebars');
 
 var app = module.exports = express(); 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
 var port = process.env.PORT || 3002;
 var database = require('./config/database');
 var candy = require('./config/candy.json');

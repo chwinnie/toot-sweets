@@ -20,5 +20,4 @@ Candy.findById = function(id) {
 	return _.findWhere(candyDataAsJson.candies, {id: id});
 }
 
-console.log(Candy.getCandies());
-console.log(Candy.findById(1));
+module.exports = Candy;

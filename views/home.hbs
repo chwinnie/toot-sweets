@@ -1,1 +1,14 @@
-<h2>Hello {{name}}<h2>  
+{{errorMessage}}
+<form action="/cart" method="post">
+	{{#each candies}}
+	    <h1>{{name}}</h1>
+	    <h3>{{price}}</h1>
+	    <select name="quantities">
+	      <option>0</option>
+		  <option>1</option>
+		  <option>2</option>
+		</select>
+		<input type="hidden" name="ids" value="{{id}}"></input>
+	{{/each}}
+	<input type="submit" value="Buy">
+</form>
