@@ -28,19 +28,21 @@ module.exports = function(app) {
 	app.get('/cart', (request, response) => { 
 		var items = cart.getItems()
 		_.each(items, function(item) {
-			var candy = Candy.findById(item.id);
-			candy.quantity = item.quantity;
-			candy.totalPrice = candy.quantity * candy.price;
-			runningPrice += candy.totalPrice;
-			candiesInCart.push(candy);
+			var candy = Candy.findById(item.id)
+			candy.quantity = item.quantity
+			candy.totalPrice = candy.quantity * candy.price
 			var totalPriceAsStr = candy.totalPrice.toString()
 			candy.dollarAmount = getDollarAmount(totalPriceAsStr)
 			candy.centAmount = getCentAmount(totalPriceAsStr)
 			if (candy.dollarAmount === "") {
+				candy.dollarAmount = '0'
 			}
 			if (candy.centAmount.length === 1) {
+				candy.centAmount = '0' + candy.centAmount
 			}
 			
+			runningPrice += candy.totalPrice
+			candiesInCart.push(candy)
 		})
 		var runningPriceAsStr = runningPrice.toString()
 		runningPriceObj.dollarAmount = getDollarAmount(runningPriceAsStr)
@@ -59,7 +61,7 @@ module.exports = function(app) {
 		var ids = formAnswers.ids
 		var zippedGroups = _.zip(ids, quantities)
 		var items = []
-		var totalNumItemsOrdered = 0;
+		var totalNumItemsOrdered = 0
 		_.each(zippedGroups, function(item) {
 			var itemToAdd = {
 				id: parseInt(item[0]),
@@ -78,7 +80,7 @@ module.exports = function(app) {
 	})
 
 	app.post('/checkout', (request, response) => { 	
-		var body = request.body;
+		var body = request.body
   		var stripeToken = body.stripeToken
   		// Charge the user's card:
 		stripe.charges.create({
@@ -87,7 +89,7 @@ module.exports = function(app) {
 		  description: "Example charge",
 		  source: stripeToken,
 		}).then(function(charge) {
-			request.session.charge = charge;
+			request.session.charge = charge
 			response.redirect('/confirmation')
 		}, function(error) {
 			errorMessage = 'Unable to charge your card.'
@@ -96,9 +98,15 @@ module.exports = function(app) {
 
 	app.get('/confirmation', (request, response) => { 
 		var charge = request.session.charge
+		var chargeAmountAsStr = charge.amount.toString()
+		var chargeAmountDollars = getDollarAmount(chargeAmountAsStr)
+		var chargeAmountCents = getCentAmount(chargeAmountAsStr)
 		response.render('confirmation', {
 	    	candiesInCart: candiesInCart,
 	    	runningPrice: runningPrice,
+	    	runningPriceObj: runningPriceObj,
+	    	chargeAmountDollars: chargeAmountDollars,
+	    	chargeAmountCents: chargeAmountCents,
 	    	cardInfo: charge.source
 		})
 	})
