@@ -1,10 +1,5 @@
 <div>Your Cart</div>
-{{#each candiesInCart}}
-    <h1>{{name}} x {{quantity}}</h1>
-    <h3>{{totalPrice}}</h1>
-{{/each}}
-
-{{runningPrice}}
+{{> order }}
 
 <form action="/checkout" method="POST">
   <script

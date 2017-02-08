@@ -21,11 +21,11 @@ require('./api/routes.js')(app);
 app.engine('.hbs', exphbs({  
   defaultLayout: 'main',
   extname: '.hbs',
-  layoutsDir: path.join(__dirname, 'views/layouts')
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  partialsDir: __dirname + '/views/partials/'
 }))
 app.set('view engine', '.hbs')  
 app.set('views', path.join(__dirname, 'views'))  
-
 
 app.listen(port, (err) => {  
   if (err) {
