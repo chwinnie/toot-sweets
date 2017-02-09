@@ -73,12 +73,15 @@ module.exports = function(app) {
 		var items = []
 		var totalNumItemsOrdered = 0
 		_.each(zippedGroups, function(item) {
-			var itemToAdd = {
-				id: parseInt(item[0]),
-				quantity: parseInt(item[1])
+			var quantity = parseInt(item[1]);
+			if (quantity > 0) {
+				var itemToAdd = {
+					id: parseInt(item[0]),
+					quantity: quantity
+				}
+				totalNumItemsOrdered += itemToAdd.quantity
+				cart.addItem(itemToAdd)
 			}
-			totalNumItemsOrdered += itemToAdd.quantity
-			cart.addItem(itemToAdd)
 		})
 		if (totalNumItemsOrdered > 2) {
 			errorMessage = 'You cannot order more than two items at once.'
