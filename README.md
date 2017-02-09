@@ -2,7 +2,7 @@
 
 <h2>Overview</h2>
 <p>A simple checkout app for a candy store written in Node.js.</p>
-![Alt text](https://cl.ly/2a1m20171O1Q "Demo")
+![alt text](https://github.com/chwinnie/toot-sweet/public/images/demo.gif "Demo")
 
 <h2>Installation and Running App</h2>
 Run `node server.js` in the top-level directory of this repository
