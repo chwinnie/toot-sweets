@@ -84,6 +84,7 @@ module.exports = function(app) {
 			errorMessage = 'You cannot order more than two items at once.'
 			response.redirect('back')
 		} else {
+			errorMessage = ''
 			response.redirect('/cart')
 		}
 	})
@@ -102,6 +103,7 @@ module.exports = function(app) {
 			response.redirect('/confirmation')
 		}, function(error) {
 			errorMessage = 'Unable to charge your card.'
+			response.redirect('back')
 		})
 	})
 
