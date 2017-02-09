@@ -10,6 +10,7 @@ Run `node server.js` in the top-level directory of this repository. Since this i
 <h2>TODOs:</h2>
 <ul>
 <li>Custom checkout page rather than using Stripe's default checkout modal</li>
+<li>Use Stripe to remember your credit card, handle other types of currencies besides USD and all sorts of payment goodness</li>
 <li>Proper handling of cart data per session</li>
 <li>Better client and server error handling</li>
   <ul>
