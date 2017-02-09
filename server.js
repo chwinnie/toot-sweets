@@ -15,7 +15,6 @@ app.use(session({ secret: 'keyboard cat'}))
 app.use(express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 3002;
-var database = require('./config/database');
 var candy = require('./config/candy.json');
 require('./api/routes.js')(app);
 
