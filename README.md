@@ -5,7 +5,7 @@
 ![alt text](https://github.com/chwinnie/toot-sweets/blob/master/public/images/demo.gif "Demo")
 
 <h2>Installation and Running App</h2>
-Run `node server.js` in the top-level directory of this repository. Since this is only a demo, for the checkout page you can use "4242424242424242" any of the other test card numbers that Stripe provides on <a href="https://stripe.com/docs/testing#cards">https://stripe.com/docs/testing#cards</a>. 
+Run `node server.js` in the top-level directory of this repository. Since this is only a demo, for the checkout page you can use `4242424242424242` or any of the other test card numbers that Stripe provides on <a href="https://stripe.com/docs/testing#cards">https://stripe.com/docs/testing#cards</a>. 
 
 <h2>TODOs:</h2>
 <ul>
