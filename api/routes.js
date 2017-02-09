@@ -1,7 +1,8 @@
 Candy = require('./candy_model')
 Cart = require('./cart_model')
+config = require('../config/config_vars')
 var _ = require('underscore')
-var stripe = require("stripe")("sk_test_4xKohW2yCQD3RpskZZOoIhKa")
+var stripe = require("stripe")(config.stripe.skId)
 
 var cart = new Cart()
 var errorMessage = ''
