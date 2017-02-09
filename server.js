@@ -29,7 +29,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 app.listen(port, (err) => {  
   if (err) {
-    return console.log('something bad happened', err)
+    return console.log('Something went wrong', err)
   }
 
   console.log(`server is listening on ${port}`)
@@ -38,7 +38,9 @@ app.listen(port, (err) => {
 app.use((err, request, response, next) => {  
   // log the error, for now just console.log
   console.log(err)
-  response.status(500).send('Something broke!')
+  response.status(404).send("That page doesn't exist! Maybe someone ate it?")
+  response.status(500).send('Uh-oh, something went wrong! Please refresh and try again.')
+
 })
 
 
