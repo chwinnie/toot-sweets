@@ -14,7 +14,7 @@ Run `node server.js` in the top-level directory of this repository. Since this i
 <li>Better client and server error handling</li>
   <ul>
     <li>Shouldn't take you to new page upon server error, should just show you error message on client and let you try again</li>
-    <li>A 404 error that asks did you mean this link? (fuzzy search on the incorrect link entered, ie you enter /catr and we suggest /cart</li>
+    <li>A 404 error that asks did you mean this link? (would use fuzzy search on the incorrect link entered, ie you enter /catr and we suggest /cart)</li>
     <li>Known bug: client error messages are not wiped when you hit Back button</li>
   </ul>
 </ul>
